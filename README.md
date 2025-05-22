@@ -17,7 +17,7 @@ Vercel for deployment
 bash
 Copy
 Edit
-git clone https://github.com/your-username/your-repo-name.git
+git clone https://github.com/SuganthManoharan725/zoccoFrontend
 cd your-repo-name
 2. Install Dependencies
 bash
@@ -43,4 +43,4 @@ npm run dev
 The app will be available at http://localhost:5173 (or another port as specified).
 
 🚀 Deployment
-The app is deployed using Vercel. You can preview the live version here: Live Demo
+The app is deployed using Vercel. You can preview the live version here: [Live Demo](https://zocco-frontend.vercel.app/)
