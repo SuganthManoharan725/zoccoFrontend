@@ -10,13 +10,19 @@ export default function Home() {
   const [loading, setLoading] = useState(true);
 
   const fetchReminders = async () => {
-    try {
-      const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/reminders`);
-      const data = await res.json();
+  try {
+   const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/reminders`);
 
-      const uniqueReminders = data.filter(
-        (r, index, self) => index === self.findIndex((x) => x._id === r._id)
-      );
+    
+    if (!res.ok) {
+      throw new Error(`HTTP error! Status: ${res.status}`);
+    }
+
+    const data = await res.json();
+
+    const uniqueReminders = data.filter(
+      (r, index, self) => index === self.findIndex((x) => x._id === r._id)
+    );
 
       setReminders(uniqueReminders);
     } catch (err) {
@@ -27,6 +33,7 @@ export default function Home() {
     }
   };
 
+
   useEffect(() => {
     fetchReminders();
   }, []);
@@ -36,8 +43,9 @@ export default function Home() {
   };
 
   const handleCompleteReminder = async (id) => {
+
     try {
-      const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/reminders/${id}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/reminders/${id}`, {
         method: 'PUT',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ done: true }),

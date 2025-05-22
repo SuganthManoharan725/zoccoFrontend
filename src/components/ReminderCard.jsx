@@ -13,7 +13,7 @@ export default function ReminderCard({ reminder, onDelete, onEdit, onComplete, i
 
   const handleDelete = async () => {
     try {
-      const res = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/reminders/${reminder._id}`, {
+      const res = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/reminders/${reminder._id}`, {
         method: 'DELETE',
       });
 

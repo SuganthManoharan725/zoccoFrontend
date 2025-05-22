@@ -29,7 +29,7 @@ export default function ReminderForm({onCancel, reminder }) {
       setLoading(false);
     } else if (id) {
       // If not passed in state, fetch it from backend
-      fetch(`${process.env.REACT_APP_API_BASE_URL}/api/reminders/${id}`)
+      fetch(`${import.meta.env.VITE_API_BASE_URL}/api/reminders/${id}`)
         .then(res => res.json())
         .then(data => {
           populateForm(data);
@@ -78,7 +78,7 @@ export default function ReminderForm({onCancel, reminder }) {
 
     if (reminderId) {
       // Update existing reminder
-      response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/reminders/${reminderId}`, {
+      response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/reminders/${reminderId}`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
@@ -87,7 +87,7 @@ export default function ReminderForm({onCancel, reminder }) {
     });
     } else {
       // Create new reminder
-      response = await fetch(`${process.env.REACT_APP_API_BASE_URL}/api/reminders`, {
+      response = await fetch(`${import.meta.env.VITE_API_BASE_URL}/api/reminders`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
